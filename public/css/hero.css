@@ -1,0 +1,366 @@
+/* =============================================================
+   hero.css — Hero Section Styles
+   Coffee Export B2B | AromaSource Global
+   ============================================================= */
+
+/* ── Hero Wrapper ───────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  background-color: var(--espresso-dark);
+}
+
+/* ── Background Layers ──────────────────────────────────────── */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Rich gradient that evokes coffee, terroir, and depth */
+.hero__bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(45,80,22,0.45) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(201,168,76,0.15) 0%, transparent 60%),
+    linear-gradient(
+      135deg,
+      #1A0F08 0%,
+      #2C1A0E 30%,
+      #3D2B1F 60%,
+      #1E3A0F 100%
+    );
+}
+
+/* Animated floating coffee bean shapes */
+.hero__beans {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero__bean {
+  position: absolute;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  opacity: 0.06;
+  animation: float linear infinite;
+}
+
+.hero__bean--1 {
+  width: 180px; height: 120px;
+  background: var(--gold);
+  top: 15%; left: 10%;
+  animation-duration: 18s;
+  transform: rotate(25deg);
+}
+.hero__bean--2 {
+  width: 120px; height: 80px;
+  background: var(--forest-light);
+  top: 55%; left: 75%;
+  animation-duration: 22s;
+  animation-delay: -6s;
+  transform: rotate(-15deg);
+}
+.hero__bean--3 {
+  width: 200px; height: 130px;
+  background: var(--cream);
+  top: 70%; left: 5%;
+  animation-duration: 26s;
+  animation-delay: -12s;
+  transform: rotate(45deg);
+}
+.hero__bean--4 {
+  width: 100px; height: 65px;
+  background: var(--gold);
+  top: 20%; left: 80%;
+  animation-duration: 20s;
+  animation-delay: -4s;
+  transform: rotate(-35deg);
+}
+.hero__bean--5 {
+  width: 250px; height: 160px;
+  background: var(--forest);
+  top: -5%; left: 55%;
+  animation-duration: 30s;
+  animation-delay: -15s;
+  transform: rotate(10deg);
+}
+
+@keyframes float {
+  0%   { transform: translateY(0)    rotate(var(--rot, 0deg)); }
+  50%  { transform: translateY(-30px) rotate(calc(var(--rot, 0deg) + 8deg)); }
+  100% { transform: translateY(0)    rotate(var(--rot, 0deg)); }
+}
+
+/* Grid overlay for depth */
+.hero__grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Hero Content ───────────────────────────────────────────── */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-top: 120px; /* clear navbar */
+  padding-bottom: var(--space-20);
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.hero__copy { max-width: 580px; }
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: var(--radius-pill);
+  padding: 0.35em 1em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-6);
+}
+
+.hero__title {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: var(--space-5);
+  letter-spacing: -0.02em;
+}
+
+.hero__title em {
+  font-style: normal;
+  color: var(--gold);
+  position: relative;
+}
+
+.hero__title em::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  opacity: 0.4;
+}
+
+.hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+  margin-bottom: var(--space-8);
+  max-width: 480px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-10);
+}
+
+/* Trust signals row */
+.hero__trust {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.hero__trust-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+
+.hero__trust-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--forest-light);
+  border-radius: 50%;
+}
+
+/* ── Hero Visual Panel ──────────────────────────────────────── */
+.hero__visual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: flex-end;
+}
+
+.hero__card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  width: 100%;
+  max-width: 360px;
+}
+
+.hero__card-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-4);
+}
+
+.hero__product-preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.hero__product-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: rgba(255,255,255,0.04);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background var(--duration) var(--ease);
+}
+
+.hero__product-item:hover { background: rgba(255,255,255,0.08); }
+
+.hero__product-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.hero__product-icon--green   { background: rgba(45,80,22,0.5); }
+.hero__product-icon--roasted { background: rgba(44,26,14,0.6); }
+
+.hero__product-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.hero__product-meta {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.hero__product-price {
+  margin-left: auto;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.hero__product-price-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+}
+
+.hero__product-price-moq {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Floating stat chip */
+.hero__stat-chip {
+  background: var(--forest);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  max-width: 200px;
+  align-self: flex-start;
+}
+
+.hero__stat-chip-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.hero__stat-chip-label {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── Scroll Indicator ───────────────────────────────────────── */
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  z-index: 2;
+}
+
+.hero__scroll-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.1); }
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__visual { align-items: center; }
+  .hero__card { max-width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .hero__actions { flex-direction: column; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
+}

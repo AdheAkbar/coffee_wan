@@ -1,0 +1,318 @@
+/* =============================================================
+   testimonials.css — Testimonial Carousel Styles
+   Coffee Export B2B | AromaSource Global
+   ============================================================= */
+
+.testimonials-section {
+  padding-block: var(--space-24);
+  background: var(--cream);
+  overflow: hidden;
+}
+
+/* ── Carousel Wrapper ───────────────────────────────────────── */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.carousel__track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* ── Slide ──────────────────────────────────────────────────── */
+.carousel__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-inline: var(--space-4);
+}
+
+/* Inner grid: 3-up slides */
+.carousel__slide-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+@media (max-width: 1024px) { .carousel__slide-inner { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .carousel__slide-inner { grid-template-columns: 1fr; } }
+
+/* ── Testimonial Card ───────────────────────────────────────── */
+.testimonial-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+  transition: all var(--duration) var(--ease);
+  height: 100%;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--forest);
+}
+
+/* Large decorative quote mark */
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-5);
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--cream-dark);
+  font-family: Georgia, serif;
+  pointer-events: none;
+  transition: color var(--duration) var(--ease);
+}
+
+.testimonial-card:hover::before { color: rgba(45,80,22,0.1); }
+
+/* Star rating */
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.star.filled { color: var(--gold); }
+.star.empty  { color: var(--border); }
+
+/* Quote text */
+.testimonial-card__quote {
+  font-size: 0.9125rem;
+  line-height: 1.72;
+  color: var(--text);
+  flex: 1;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+/* Volume badge */
+.testimonial-card__volume {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: var(--cream);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-pill);
+  padding: 0.2em 0.7em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--forest);
+  width: fit-content;
+}
+
+/* Client info */
+.testimonial-card__client {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-light);
+}
+
+/* Company logo / initials avatar */
+.testimonial-card__logo {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--border-light);
+}
+
+.company-initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--white);
+  background: var(--espresso);
+  letter-spacing: 0.02em;
+}
+
+/* Vary initials bg colors */
+.testimonial-card:nth-child(2) .company-initials { background: var(--forest); }
+.testimonial-card:nth-child(3) .company-initials { background: #1565C0; }
+.testimonial-card:nth-child(4) .company-initials { background: #6A1B9A; }
+.testimonial-card:nth-child(5) .company-initials { background: #E65100; }
+.testimonial-card:nth-child(6) .company-initials { background: #00695C; }
+
+.testimonial-card__client-info { flex: 1; min-width: 0; }
+
+.testimonial-card__name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--espresso);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.testimonial-card__title {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.testimonial-card__company {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--forest);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.testimonial-card__country {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+/* Partnership since */
+.testimonial-card__since {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.testimonial-card__since-label {
+  font-size: 0.68rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.testimonial-card__since-year {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--espresso);
+}
+
+/* ── Carousel Controls ──────────────────────────────────────── */
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.carousel__btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+  font-size: 1.1rem;
+  border: 2px solid var(--border);
+  color: var(--text-muted);
+  background: var(--white);
+}
+
+.carousel__btn:hover {
+  background: var(--espresso);
+  border-color: var(--espresso);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.carousel__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Dot indicators */
+.carousel__dots {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--border);
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+  border: none;
+}
+
+.carousel__dot.active {
+  background: var(--espresso);
+  width: 24px;
+}
+
+.carousel__dot:hover:not(.active) { background: var(--text-muted); }
+
+/* Progress bar */
+.carousel__progress {
+  height: 2px;
+  background: var(--border-light);
+  border-radius: 1px;
+  margin-bottom: var(--space-6);
+  overflow: hidden;
+}
+
+.carousel__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--forest), var(--gold));
+  border-radius: 1px;
+  transition: width 5s linear;
+}
+
+/* Auto-play pause on hover */
+.carousel:hover .carousel__progress-fill {
+  animation-play-state: paused;
+}
+
+/* ── Skeleton loader (shown while JS fetches data) ───────────── */
+.testimonial-skeleton {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  border: 1px solid var(--border-light);
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--cream) 25%, var(--cream-dark) 50%, var(--cream) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skeleton-line--short { width: 40%; }
+.skeleton-line--medium{ width: 65%; }
+.skeleton-line--long  { width: 90%; }
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

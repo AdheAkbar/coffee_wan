@@ -1,0 +1,283 @@
+/* =============================================================
+   warehouse.css — Warehousing Section Styles
+   Coffee Export B2B | AromaSource Global
+   ============================================================= */
+
+.warehouse-section {
+  padding-block: var(--space-24);
+  background: var(--espresso);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle texture overlay */
+.warehouse-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(45,80,22,0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(201,168,76,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.warehouse-section .container { position: relative; z-index: 1; }
+
+/* ── Grid ───────────────────────────────────────────────────── */
+.warehouse-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+@media (max-width: 1024px) { .warehouse-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .warehouse-grid { grid-template-columns: 1fr; } }
+
+/* ── Warehouse Card ─────────────────────────────────────────── */
+.warehouse-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+  group: true;
+}
+
+.warehouse-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26,15,8,0.92) 0%,
+    rgba(26,15,8,0.5)  40%,
+    transparent        80%
+  );
+  z-index: 1;
+  transition: opacity var(--duration) var(--ease);
+}
+
+.warehouse-card:hover::after {
+  background: linear-gradient(
+    to top,
+    rgba(26,15,8,0.97) 0%,
+    rgba(26,15,8,0.7)  50%,
+    rgba(26,15,8,0.2)  90%
+  );
+}
+
+/* Facility image (CSS-illustrated backgrounds) */
+.warehouse-card__image {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.5s var(--ease);
+}
+
+.warehouse-card:hover .warehouse-card__image { transform: scale(1.06); }
+
+/* Theme: Silo */
+.warehouse-card--silo .warehouse-card__image {
+  background:
+    linear-gradient(180deg, #1a2a40 0%, #0d1a2a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warehouse-card--silo .warehouse-card__image::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 80%;
+  background: linear-gradient(180deg, #2a4060 0%, #1a3050 50%, #0f2040 100%);
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+  box-shadow: inset 0 20px 40px rgba(0,100,200,0.1);
+}
+
+.warehouse-card--silo .warehouse-card__image::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 25%; 
+  width: 20%; height: 60%;
+  background: linear-gradient(180deg, #233550 0%, #1a2a40 100%);
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+}
+
+/* Theme: Humidity */
+.warehouse-card--humidity .warehouse-card__image {
+  background: linear-gradient(135deg, #0a1a2a 0%, #1a2a3a 50%, #0d2030 100%);
+}
+
+.warehouse-card--humidity .warehouse-card__image::before {
+  content: '';
+  position: absolute;
+  top: 20%; left: 20%;
+  width: 60%; height: 60%;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(100,200,255,0.15) 0%, transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(60,160,220,0.1) 0%, transparent 50%);
+  border-radius: 50%;
+}
+
+/* Theme: Hermetic */
+.warehouse-card--hermetic .warehouse-card__image {
+  background: linear-gradient(135deg, #2d1a08 0%, #1a0f05 50%, #0f0805 100%);
+}
+
+.warehouse-card--hermetic .warehouse-card__image::before {
+  content: '';
+  position: absolute;
+  top: 15%; left: 50%; transform: translateX(-50%);
+  width: 70%; height: 75%;
+  background:
+    linear-gradient(145deg, #5a3a20 0%, #3a2010 60%, #1a0f05 100%);
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(201,168,76,0.2);
+}
+
+/* Theme: Sorting */
+.warehouse-card--sorting .warehouse-card__image {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+.warehouse-card--sorting .warehouse-card__image::before {
+  content: '';
+  position: absolute;
+  top: 30%; left: 10%;
+  width: 80%; height: 40%;
+  background: linear-gradient(90deg,
+    rgba(100,180,255,0.1) 0%,
+    rgba(150,200,255,0.2) 30%,
+    rgba(100,180,255,0.1) 60%,
+    rgba(180,220,255,0.15) 100%
+  );
+  border-radius: var(--radius);
+}
+
+/* Theme: Loading */
+.warehouse-card--loading .warehouse-card__image {
+  background: linear-gradient(160deg, #0d1b2a 0%, #1b263b 40%, #0a0f18 100%);
+}
+
+.warehouse-card--loading .warehouse-card__image::before {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 70%; height: 55%;
+  background:
+    linear-gradient(135deg, #1e3a5f 0%, #2d5581 40%, #1a3050 100%);
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* Theme: Lab */
+.warehouse-card--lab .warehouse-card__image {
+  background: linear-gradient(135deg, #f5f0e8 0%, #ede5d5 30%, #d4c4b0 100%);
+}
+
+.warehouse-card--lab .warehouse-card__image::before {
+  content: '';
+  position: absolute;
+  top: 20%; left: 50%; transform: translateX(-50%);
+  width: 40%; height: 60%;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(200,220,255,0.7) 100%);
+  border-radius: 50% 50% 40% 40% / 30% 30% 60% 60%;
+  border: 3px solid rgba(100,150,200,0.3);
+}
+
+/* ── Card Content ───────────────────────────────────────────── */
+.warehouse-card__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  z-index: 2;
+  transform: translateY(0);
+  transition: transform var(--duration) var(--ease);
+}
+
+.warehouse-card__icon {
+  font-size: 1.75rem;
+  margin-bottom: var(--space-2);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.warehouse-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: var(--space-2);
+  line-height: 1.3;
+}
+
+.warehouse-card__description {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.55;
+  margin-bottom: var(--space-3);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  transition: -webkit-line-clamp var(--duration) var(--ease);
+}
+
+.warehouse-card:hover .warehouse-card__description {
+  -webkit-line-clamp: 4;
+}
+
+/* Spec chip */
+.warehouse-card__spec {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: rgba(201,168,76,0.2);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: var(--radius-pill);
+  padding: 0.2em 0.7em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+
+/* ── Capacity Strip ─────────────────────────────────────────── */
+.warehouse-capacity {
+  margin-top: var(--space-10);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.capacity-item {
+  text-align: center;
+}
+
+.capacity-item__value {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: var(--space-1);
+}
+
+.capacity-item__label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+
+.capacity-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.08);
+}
+
+@media (max-width: 600px) { .capacity-divider { display: none; } }
